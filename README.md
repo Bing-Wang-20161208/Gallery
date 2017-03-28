@@ -1,3 +1,5 @@
+### It is a long way to dig, then fill.
+### Finished with ES6 and React.The leason is from [React实战--打造画廊应用](http://www.imooc.com/learn/507) , and had changed somewhat for the new versions.
 ## Step:
 1. 安装脚手架Yeoman：npm install yo -g
 2. 安装项目结构：npm install generator-react-webpack -g
@@ -7,3 +9,5 @@
 6. npm install autoprefixer-loader --save-dev 并进行配置
 7. 添加imageDatas.json图像信息配置文件，并存入图片,在Main.js中require('data/imageDatas.json')
 8. Main.js具体编辑 (需要自安装node-sass, sass-loader)
+
+*cnpm完美装npm包*
