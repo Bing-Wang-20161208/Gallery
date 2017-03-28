@@ -11,3 +11,6 @@
 8. Main.js具体编辑 (需要自安装node-sass, sass-loader)
 
 *cnpm完美装npm包*
+
+### 预览地址：[Gallery](https://bing-wang-20161208.github.io/Gallery/)
+### Help from: [DodoMonster](https://github.com/DodoMonster/galllery-by-react) , [MandyJin](https://github.com/MandyJin/gallery-by-react)
