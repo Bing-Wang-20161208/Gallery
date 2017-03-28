@@ -1,0 +1,10 @@
+### Yeoman:基于nodejs构建，生成项目的文件和代码结构
+### 文件说明：
+1. src：源代码所在目录
+2. test：测试代码所在目录
+3. .editorconfig：统一不同编辑器的风格
+4. .eslintrc：所有js，jsx代码检测器
+5. .yo-rc.json：记录所有yeoman信息的配置文件
+6. karma.conf.js：karma测试的配置文件
+7. webpack.config.js：webpack开发环境的配置文件
+### 完成一个小功能，就应该git一次

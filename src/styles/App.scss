@@ -1,27 +1,79 @@
-html, body {
+@mixin dis_whole {
   width: 100%;
   height: 100%;
+}
+@font-face {
+  font-family: "icons-turn-arrow";
+  src: url("../fonts/icons/turn-arrow.eot") format("embedded-opentype"), url("../fonts/icons/turn-arrow.woff") format("woff"), url("../fonts/icons/turn-arrow.ttf") format("truetype"), url("../fonts/icons/turn-arrow.svg") format("svg");
+}
+
+html, body {
+  @include dis_whole;
   background-color: #222;
 }
 .content {
-  width: 100%;
-  height: 100%;
+  @include dis_whole;
 }
 
 // stage
 .stage {
   position: relative;
-  width: 100%;
-  height: 680px;
+  @include dis_whole;
 }
 
 // image
 .img-sec {
   position: relative;
-  width: 100%;
-  height: 100%;
+  @include dis_whole;
   overflow: hidden;
   background-color: #ddd;
+  perspective: 1800px;
+
+  @at-root {//将最终生成的代码放在最外层
+    .img-figure {
+      position: absolute;
+      width: 420px;
+      height: 360px;
+      margin: 0;
+      padding: 40px;
+      background-color: #fff;
+      box-sizing: border-box;
+      cursor: pointer;
+      transform-origin: 15% 15%;
+      transform-style: preserve-3d;
+      transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
+      &.is-inverse {
+        transform: translate(320px) rotateY(180deg);
+      }
+    }
+    figcaption {
+      text-align: center;
+      .img-title {
+        margin: 20px 0 0 0;
+        color: #a7a0a2;
+        font-size: 16px;
+      }
+      .img-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include dis_whole;
+        padding: 50px 40px;
+        overflow: auto;
+        color: #a7a0a2;
+        font-size: 22px;
+        line-height: 1.25;
+        text-align: center;
+        background-color: #fff;
+        box-sizing: border-box;
+        /*
+         *先开始时.img-back，旋转了180度，因为translateZ(1px)，位于正面图像的下方
+         *当.img-figure旋转时，.img-back又旋转了180度，旋转度数为360,因为translateZ(1px)，位于正面图像的上方
+         */
+        transform: rotateY(180deg) translateZ(1px);
+      }
+    }
+  }
 }
 
 // controller
@@ -32,4 +84,40 @@ html, body {
   z-index: 101;
   width: 100%;
   text-align: center;
+
+  @at-root {
+    .controller-unit {
+      display: inline-block;
+      margin: 0 5px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #aaa;
+      border-radius: 50%;
+      transform: scale(.5);
+      transition: transform .6s ease-in-out, background-color .3s;
+
+      &.is-center {
+        transform: scale(1);
+        background-color: #888;
+
+        &::after {
+          color: #fff;
+          font-family: "icons-turn-arrow";
+          content: "\e600";
+          line-height: 30px;
+          font-size: 80%;
+          -webkit-font-smoothing: antialiased;//开启chrome字体渲染的灰阶平滑
+          -moz-osx-font-smoothing: grayscale;//开启firefox在mac上字体渲染的灰阶平滑
+        }
+
+        &.is-inverse {
+          background-color: #555;
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
 }
